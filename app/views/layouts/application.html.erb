@@ -11,15 +11,27 @@
   </head>
 
   <body class="h-full bg-gray-800 text-white">
-    <div class="flex flex-col h-screen">
-      <%= render 'layouts/header' %>
-      <div class="flex flex-1 overflow-hidden">
-        <%= render 'layouts/sidebar' %>
-        <main class="flex-1 bg-[#0F0F0F] p-8 overflow-y-auto">
+
+    <%= render 'layouts/flash' %>
+
+    <% if user_signed_in? %>
+      <div class="flex flex-col h-screen">
+        <%= render 'layouts/header' %>
+        <div class="flex flex-1 overflow-hidden">
+          <%= render 'layouts/sidebar' %>
+          <main class="flex-1 bg-[#0F0F0F] p-8 overflow-y-auto">
+            <%= yield %>
+          </main>
+        </div>
+        <%= render 'layouts/footer' %>
+      </div>
+    <% else %>
+      <div class="flex items-center justify-center h-screen">
+        <main>
           <%= yield %>
         </main>
       </div>
-      <%= render 'layouts/footer' %>
-    </div>
+    <% end %>
+
   </body>
 </html>

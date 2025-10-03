@@ -1,0 +1,47 @@
+<%# app/views/devise/sessions/new.html.erb %>
+
+<div class="bg-gray-800 w-full max-w-md p-8 space-y-8 rounded-xl shadow-lg">
+  
+  <div>
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+      Bem-vindo de volta!
+    </h2>
+    <p class="mt-2 text-center text-sm text-gray-400">
+      Faça login para continuar no Helpify
+    </p>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+    <div class="rounded-md shadow-sm -space-y-px">
+      
+      <div>
+        <%= f.label :email, "Endereço de e-mail", class: "sr-only" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-t-md", placeholder: "Endereço de e-mail" %>
+      </div>
+      
+      <div>
+        <%= f.label :password, "Senha", class: "sr-only" %>
+        <%= f.password_field :password, autocomplete: "current-password", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-b-md", placeholder: "Senha" %>
+      </div>
+
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-600 rounded bg-gray-700" %>
+          <%= f.label :remember_me, "Lembrar-me", class: "ml-2 block text-sm text-gray-300" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.submit "Entrar", class: "group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-800 cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="text-center text-sm">
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>

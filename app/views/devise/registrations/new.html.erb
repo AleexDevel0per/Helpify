@@ -1,0 +1,43 @@
+<div class="bg-gray-800 w-full max-w-md p-8 space-y-8 rounded-xl shadow-lg">
+  
+  <div>
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+      Crie sua conta
+    </h2>
+    <p class="mt-2 text-center text-sm text-gray-400">
+      Junte-se ao Helpify para começar
+    </p>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="rounded-md shadow-sm -space-y-px">
+      
+      <div>
+        <%= f.label :email, "Endereço de e-mail", class: "sr-only" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-t-md", placeholder: "Endereço de e-mail" %>
+      </div>
+      
+      <div>
+        <%= f.label :password, "Senha", class: "sr-only" %>
+        <%= f.password_field :password, autocomplete: "new-password", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Senha (#{@minimum_password_length} caracteres no mínimo)" %>
+      </div>
+
+      <div>
+        <%= f.label :password_confirmation, "Confirme sua senha", class: "sr-only" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-700 bg-gray-900 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-b-md", placeholder: "Confirme sua senha" %>
+      </div>
+
+    </div>
+
+    <div>
+      <%= f.submit "Criar conta", class: "group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-gray-800 cursor-pointer" %>
+    </div>
+  <% end %>
+
+  <div class="text-center text-sm">
+    <%= render "devise/shared/links" %>
+  </div>
+
+</div>
